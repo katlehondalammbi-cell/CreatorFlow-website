@@ -144,47 +144,6 @@
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script> 
-  
-  <label for="cf-platform">Choose your platform</label>
-  <select id="cf-platform" style="display:block;padding:10px;margin:10px 0;width:100%;">
-    <option>TikTok</option>
-    <option>Instagram</option>
-    <option>YouTube</option>
-    <option>Facebook</option>
-  </select>
-
-  <button id="cf-generate" type="button" style="background:#6c3bdb;color:white;padding:13px 20px;border:0;border-radius:8px;cursor:pointer;">
-    Generate Ideas
-  </button>
-
-  <div id="cf-results" style="margin-top:20px;white-space:pre-wrap;line-height:1.7;"></div>
-</section>
-
-<script>
-document.getElementById("cf-generate").addEventListener("click", function () {
-  const topic = document.getElementById("cf-topic").value.trim();
-  const platform = document.getElementById("cf-platform").value;
-  const results = document.getElementById("cf-results");
-
-  if (!topic) {
-    results.textContent = "Please enter a content topic first.";
-    return;
-  }
-
-  const ideas = [
-    "Show 3 things beginners should know about " + topic + ".",
-    "Create a before-and-after video about " + topic + ".",
-    "Share 5 tips about " + topic + "."
-  ];
-
-  results.textContent =
-    "YOUR " + platform.toUpperCase() + " CONTENT PLAN\n\n" +
-    "VIDEO IDEAS\n" + ideas.map((idea, i) => (i + 1) + ". " + idea).join("\n") +
-    "\n\nCAPTION\n" + "POV: You're discovering " + topic + " ✨ What do you think? Tell me below!" +
-    "\n\nHASHTAGS\n" + "#CreatorFlow #" + topic.replace(/[^a-zA-Z0-9]/g, "") +
-    " #ContentCreator #ForYou\n\n" +
-    "TIP\nStart with a strong hook in the first 3 seconds.";
-});
 </script>
 </body>
 </html>
