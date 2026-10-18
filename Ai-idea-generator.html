@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Idea Generator | CreatorFlow</title>
+  <meta name="description" content="Generate content ideas, captions and hashtags with CreatorFlow.">
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      background: #f7f4ff;
+      color: #24133f;
+    }
+    .container {
+      max-width: 700px;
+      margin: 35px auto;
+      padding: 28px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 5px 25px #24133f15;
+    }
+    textarea, select {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 12px 0 20px;
+      padding: 12px;
+      border: 1px solid #d5c9eb;
+      border-radius: 8px;
+      font: inherit;
+    }
+    textarea { min-height: 110px; }
+    button {
+      padding: 13px 20px;
+      border: 0;
+      border-radius: 8px;
+      background: #6c3bdb;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #results {
+      margin-top: 24px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    a { color: #6c3bdb; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <p><a href="index.html">← Back to CreatorFlow home</a></p>
+    <h1>✨ AI Idea Generator</h1>
+    <p>Turn your next content idea into video ideas, captions and hashtags.</p>
+
+    <label for="topic">What is your content about?</label>
+    <textarea id="topic" placeholder="Example: Amapiano dance moves"></textarea>
+
+    <label for="platform">Choose your platform</label>
+    <select id="platform">
+      <option>TikTok</option>
+      <option>Instagram</option>
+      <option>YouTube</option>
+      <option>Facebook</option>
+    </select>
+
+    <button id="generate" type="button">Generate Ideas</button>
+    <div id="results" aria-live="polite"></div>
+  </main>
+
+  <script>
+    document.getElementById("generate").addEventListener("click", function () {
+      const topic = document.getElementById("topic").value.trim();
+      const platform = document.getElementById("platform").value;
+      const results = document.getElementById("results");
+
+      if (!topic) {
+        results.textContent = "Please enter a topic first.";
+        return;
+      }
+
+      const ideas = [
+        "Show 3 beginner tips about " + topic + ".",
+        "Make a behind-the-scenes video about " + topic + ".",
+        "Share 5 things people should know about " + topic + "."
+      ];
+
+      const safeTopic = topic.replace(/[^a-zA-Z0-9 ]/g, "").trim();
+      const hashtag = safeTopic.replace(/\s+/g, "");
+
+      results.textContent =
+        "YOUR " + platform.toUpperCase() + " PLAN\n\n" +
+        "VIDEO IDEAS\n" +
+        ideas.map((idea, i) => (i + 1) + ". " + idea).join("\n") +
+        "\n\nCAPTION\n" +
+        "Let's talk about " + topic +
+        "! ✨ What do you think? Share your thoughts below.\n\n" +
+        "HASHTAGS\n" +
+        "#CreatorFlow #" + hashtag + " #ContentCreator #ForYou\n\n" +
+        "TIP\nStart with an interesting hook in the first 3 seconds.";
+    });
+  </script>
+</body>
+</html>
